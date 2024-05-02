@@ -27,7 +27,6 @@ public class Owner {
     @Column(name = "email")
     private String email;
 
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner",cascade = CascadeType.ALL)
     private List<Blog> blogs;
 
