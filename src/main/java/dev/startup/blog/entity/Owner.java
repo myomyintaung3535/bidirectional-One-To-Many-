@@ -1,5 +1,6 @@
 package dev.startup.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,8 +27,9 @@ public class Owner {
     @Column(name = "email")
     private String email;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner",cascade = CascadeType.ALL)
-    private List<Blog> blogList;
+    private List<Blog> blogs;
 
 
 }

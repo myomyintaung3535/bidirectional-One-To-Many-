@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class OwnerController {
 
     private final  OwnerService ownerService;
-    private final BlogService blogService;
     @Autowired
-    public OwnerController(OwnerService ownerService, BlogService blogService) {
+    public OwnerController(OwnerService ownerService) {
         this.ownerService = ownerService;
-        this.blogService = blogService;
     }
 
     @PostMapping("/saveOwner")

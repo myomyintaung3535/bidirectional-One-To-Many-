@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OwnerServiceImpl implements OwnerService{
@@ -24,7 +25,7 @@ public class OwnerServiceImpl implements OwnerService{
         savedOwner.setName(owner.getName());
         savedOwner.setEmail(owner.getEmail());
         List<Blog> blogList = new ArrayList<>();
-        for (Blog b : owner.getBlogList()){
+        for (Blog b : owner.getBlogs()){
             Blog blog = new Blog();
             blog.setId(b.getId());
             blog.setContent(b.getContent());
@@ -32,7 +33,7 @@ public class OwnerServiceImpl implements OwnerService{
             blog.setOwner(savedOwner);
             blogList.add(blog);
         }
-        savedOwner.setBlogList(blogList);
+        savedOwner.setBlogs(blogList);
         return repo.save(savedOwner);
     }
 
@@ -43,7 +44,7 @@ public class OwnerServiceImpl implements OwnerService{
 
     @Override
     public Owner findOwnerById(Long id) {
-        return null;
+        return repo.findById(id).orElseThrow(()-> new RuntimeException("There is no owner"));
     }
 
     @Override

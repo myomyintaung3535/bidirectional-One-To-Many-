@@ -19,7 +19,13 @@ public class BlogServiceImpl implements BlogService{
 
     @Override
     public Blog saveBlog(Blog blog) {
-        return repo.save(blog);
+        Blog savedBlog = new Blog();
+        savedBlog.setId(blog.getId());
+        savedBlog.setTitle(blog.getTitle());
+        savedBlog.setCategory(blog.getCategory());
+        savedBlog.setContent(blog.getContent());
+        savedBlog.setOwner(blog.getOwner());
+        return repo.save(savedBlog);
     }
 
     @Override
